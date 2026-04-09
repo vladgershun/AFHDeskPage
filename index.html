@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AFHDesk | Run Your Adult Family Home From One Desk</title>
+<title>AFHDesk — The Adult Family Home Marketplace</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -22,7 +22,6 @@
     --slate-light: #F1F5F9;
     --slate-border: #E2E8F0;
     --slate-border-dark: #CBD5E1;
-    --ice: #EFF6FF;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +33,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     display: flex;
     justify-content: space-between;
@@ -79,7 +77,7 @@
     text-align: center;
   }
 
-  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-inner { max-width: 780px; margin: 0 auto; }
 
   .hero-badge {
     display: inline-flex;
@@ -128,72 +126,106 @@
     font-size: 1.05rem;
     color: var(--ink-soft);
     line-height: 1.72;
-    max-width: 540px;
+    max-width: 580px;
     margin: 0 auto 2.75rem;
     font-weight: 400;
     animation: fadeUp 0.5s ease 0.2s both;
   }
 
-  /* EMAIL FORM */
-  .email-form {
-    display: flex;
-    gap: 8px;
-    max-width: 460px;
-    margin: 0 auto 0.85rem;
+  /* TWO SIDED SIGNUP */
+  .dual-signup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 640px;
+    margin: 0 auto 1rem;
     animation: fadeUp 0.5s ease 0.3s both;
   }
 
-  .email-input {
-    flex: 1;
-    padding: 0.8rem 1rem;
+  .signup-box {
     border: 1.5px solid var(--slate-border-dark);
-    border-radius: 8px;
+    border-radius: 12px;
+    padding: 1.25rem;
+    background: var(--white);
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .signup-box:hover { border-color: var(--sky); }
+  .signup-box.provider { border-top: 3px solid var(--sky); }
+  .signup-box.family { border-top: 3px solid var(--slate); }
+
+  .signup-box-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .provider .signup-box-label { color: var(--sky-dark); }
+  .family .signup-box-label { color: var(--slate); }
+
+  .signup-box-desc {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .email-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .email-input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid var(--slate-border-dark);
+    border-radius: 7px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     background: var(--white);
     color: var(--ink);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s;
   }
-  .email-input:focus {
-    border-color: var(--sky);
-    box-shadow: 0 0 0 3px rgba(14,165,233,0.12);
-  }
+  .email-input:focus { border-color: var(--sky); }
   .email-input::placeholder { color: var(--ink-muted); }
 
   .submit-btn {
-    background: var(--sky);
-    color: #fff;
+    width: 100%;
     border: none;
-    padding: 0.8rem 1.4rem;
-    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    border-radius: 7px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.1s;
+    transition: opacity 0.2s, transform 0.1s;
   }
-  .submit-btn:hover { background: var(--sky-mid); }
   .submit-btn:active { transform: scale(0.98); }
-
-  .form-note {
-    font-size: 0.77rem;
-    color: var(--ink-muted);
-    animation: fadeUp 0.5s ease 0.35s both;
-  }
+  .provider .submit-btn { background: var(--sky); color: #fff; }
+  .provider .submit-btn:hover { background: var(--sky-mid); }
+  .family .submit-btn { background: var(--slate); color: #fff; }
+  .family .submit-btn:hover { background: var(--slate-mid); }
 
   .success-msg {
     display: none;
-    background: var(--sky-light);
-    border: 1px solid #BAE6FD;
-    color: var(--sky-dark);
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    max-width: 460px;
-    margin: 0 auto;
+    padding: 0.5rem 0.7rem;
+    border-radius: 7px;
+    text-align: center;
+  }
+  .provider .success-msg { background: var(--sky-light); color: var(--sky-dark); }
+  .family .success-msg { background: var(--slate-light); color: var(--slate); }
+
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    text-align: center;
+    animation: fadeUp 0.5s ease 0.35s both;
   }
 
   .social-proof {
@@ -209,16 +241,12 @@
 
   .avatars { display: flex; }
   .avatar {
-    width: 27px;
-    height: 27px;
+    width: 27px; height: 27px;
     border-radius: 50%;
     border: 2px solid var(--white);
     margin-left: -7px;
-    font-size: 10px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
     color: #fff;
   }
   .avatar:first-child { margin-left: 0; }
@@ -227,14 +255,10 @@
   .av3 { background: #0284C7; }
   .av4 { background: #475569; }
 
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--slate);
-    padding: 1.75rem 5%;
-  }
+  /* STATS */
+  .stats-bar { background: var(--slate); padding: 1.75rem 5%; }
   .stats-inner {
-    max-width: 860px;
-    margin: 0 auto;
+    max-width: 860px; margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
@@ -243,270 +267,216 @@
     border-radius: 12px;
     overflow: hidden;
   }
+  .stat { background: var(--slate); padding: 1.25rem 1.5rem; text-align: center; }
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.75rem; font-weight: 700;
+    color: var(--sky);
+    letter-spacing: -0.03em;
+    line-height: 1; margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.8rem; color: #94A3B8; font-weight: 400; }
 
   @media (max-width: 600px) {
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
   }
-  .stat {
-    background: var(--slate);
-    padding: 1.25rem 1.5rem;
-    text-align: center;
-  }
-  .stat-num {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--sky);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .stat-label { font-size: 0.8rem; color: #94A3B8; font-weight: 400; }
 
-  /* PROBLEM */
-  .problem {
-    background: var(--off-white);
-    border-top: 1px solid var(--slate-border);
-    border-bottom: 1px solid var(--slate-border);
+  /* HOW IT WORKS */
+  .how {
+    max-width: 900px; margin: 0 auto;
     padding: 5rem 5%;
-    text-align: center;
   }
-  .problem-inner { max-width: 680px; margin: 0 auto; }
+
+  .how-header { text-align: center; margin-bottom: 3rem; }
 
   .section-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: block;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.75rem; display: block;
     color: var(--sky-mid);
   }
-
-  .problem h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 1.1rem;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
-  }
-
-  .problem p {
-    font-size: 1rem;
-    color: var(--ink-soft);
-    line-height: 1.75;
-    font-weight: 400;
-    margin-bottom: 0.85rem;
-  }
-
-  .pain-points {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.85rem;
-    margin-top: 2.5rem;
-    text-align: left;
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media (max-width: 700px) {
-    .pain-points { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 400px) {
-    .pain-points { grid-template-columns: 1fr; }
-  }
-
-  .pain-point {
-    background: var(--white);
-    border: 1px solid var(--slate-border);
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
-  .pain-point-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
-  .pain-point-text { font-size: 0.855rem; color: var(--ink-soft); line-height: 1.55; }
-
-  /* FEATURES */
-  .features {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 5rem 5%;
-  }
-
-  .features-header { text-align: center; margin-bottom: 3rem; }
 
   h2 {
     font-family: 'Sora', sans-serif;
     font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: var(--ink);
-    line-height: 1.2;
+    color: var(--ink); line-height: 1.2;
   }
 
-  .phase-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.85rem;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 1.1rem;
-  }
-
-  .phase-1 { background: var(--sky-light); color: var(--sky-dark); border: 1px solid #BAE6FD; }
-  .phase-2 { background: var(--slate-light); color: var(--slate); border: 1px solid #CBD5E1; }
-
-  .features-grid {
+  .two-col {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--slate-border);
-    border: 1px solid var(--slate-border);
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .side-card {
     border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 2.25rem;
+    padding: 2rem;
+    border: 1px solid var(--slate-border);
   }
+  .side-card.provider-card { background: var(--sky-pale); border-color: #BAE6FD; }
+  .side-card.family-card { background: var(--slate-light); border-color: var(--slate-border-dark); }
 
-  .feature-item {
-    background: var(--white);
-    padding: 1.75rem;
-    transition: background 0.15s;
-  }
-  .feature-item:hover { background: var(--sky-pale); }
-
-  .feature-icon {
-    width: 38px;
-    height: 38px;
-    background: var(--sky-light);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 17px;
-  }
-
-  .feature-item.phase2-item .feature-icon { background: var(--slate-light); }
-  .feature-item.phase2-item:hover { background: var(--slate-light); }
-
-  .feature-title {
+  .side-card-title {
     font-family: 'Sora', sans-serif;
-    font-size: 0.975rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 0.45rem;
-    letter-spacing: -0.01em;
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .provider-card .side-card-title { color: var(--sky-dark); }
+  .family-card .side-card-title { color: var(--slate); }
+
+  .side-card-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .provider-card .side-card-icon { background: var(--sky-light); }
+  .family-card .side-card-icon { background: #E2E8F0; }
+
+  .step-list { display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .step {
+    display: flex; gap: 10px; align-items: flex-start;
   }
 
-  .feature-desc {
-    font-size: 0.855rem;
-    color: var(--ink-soft);
-    line-height: 1.65;
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
   }
+  .provider-card .step-num { background: var(--sky); color: #fff; }
+  .family-card .step-num { background: var(--slate); color: #fff; }
+
+  .step-text { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.5; }
+  .step-text strong { color: var(--ink); font-weight: 600; }
+
+  /* PROBLEM */
+  .problem {
+    background: var(--off-white);
+    border-top: 1px solid var(--slate-border);
+    border-bottom: 1px solid var(--slate-border);
+    padding: 5rem 5%; text-align: center;
+  }
+  .problem-inner { max-width: 680px; margin: 0 auto; }
+
+  .problem h2 { margin-bottom: 1.1rem; }
+
+  .problem p {
+    font-size: 1rem; color: var(--ink-soft);
+    line-height: 1.75; margin-bottom: 0.85rem;
+  }
+
+  .pain-points {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem; margin-top: 2.5rem;
+    text-align: left;
+    max-width: 860px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .pain-point {
+    background: var(--white);
+    border: 1px solid var(--slate-border);
+    border-radius: 10px; padding: 1.25rem;
+  }
+  .pain-point-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .pain-point-text { font-size: 0.855rem; color: var(--ink-soft); line-height: 1.55; }
+
+  @media (max-width: 700px) { .pain-points { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px) { .pain-points { grid-template-columns: 1fr; } }
 
   /* CTA */
   .cta-section {
     background: var(--sky);
-    padding: 5.5rem 5%;
-    text-align: center;
+    padding: 5.5rem 5%; text-align: center;
   }
-
-  .cta-inner { max-width: 580px; margin: 0 auto; }
-
+  .cta-inner { max-width: 600px; margin: 0 auto; }
   .cta-section .section-label { color: rgba(255,255,255,0.7); }
-
   .cta-section h2 {
     font-family: 'Sora', sans-serif;
     font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin-bottom: 1rem;
-    color: #fff;
-    line-height: 1.15;
+    font-weight: 700; letter-spacing: -0.025em;
+    margin-bottom: 1rem; color: #fff; line-height: 1.15;
   }
-
   .cta-section p {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.82);
-    margin-bottom: 2rem;
-    line-height: 1.7;
+    font-size: 1rem; color: rgba(255,255,255,0.82);
+    margin-bottom: 2rem; line-height: 1.7;
   }
 
-  .cta-form {
-    display: flex;
-    gap: 8px;
-    max-width: 440px;
+  .cta-dual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 560px;
     margin: 0 auto 0.75rem;
   }
 
-  .cta-input {
-    flex: 1;
-    padding: 0.8rem 1rem;
-    border: 1.5px solid rgba(255,255,255,0.4);
-    border-radius: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
+  .cta-box {
     background: rgba(255,255,255,0.15);
-    color: #fff;
-    outline: none;
-    transition: border-color 0.2s;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 12px; padding: 1.1rem;
+    text-align: left;
   }
-  .cta-input::placeholder { color: rgba(255,255,255,0.6); }
+
+  .cta-box-label {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-bottom: 0.6rem;
+  }
+
+  .cta-input {
+    width: 100%; padding: 0.6rem 0.8rem;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 7px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.15);
+    color: #fff; outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 6px;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.55); }
   .cta-input:focus { border-color: rgba(255,255,255,0.8); }
 
   .cta-btn {
-    background: #fff;
-    color: var(--sky-dark);
-    border: none;
-    padding: 0.8rem 1.4rem;
-    border-radius: 8px;
+    width: 100%; background: #fff;
+    border: none; padding: 0.6rem 1rem;
+    border-radius: 7px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: opacity 0.2s, transform 0.1s;
+    font-size: 0.82rem; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
   }
-  .cta-btn:hover { opacity: 0.92; }
-  .cta-btn:active { transform: scale(0.98); }
-
-  .cta-note { font-size: 0.77rem; color: rgba(255,255,255,0.6); }
+  .cta-btn:hover { opacity: 0.9; }
+  .provider-cta .cta-btn { color: var(--sky-dark); }
+  .family-cta .cta-btn { color: var(--slate); }
 
   .cta-success {
     display: none;
     background: rgba(255,255,255,0.2);
     border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    max-width: 440px;
-    margin: 0 auto;
+    color: #fff; padding: 0.6rem;
+    border-radius: 7px; font-size: 0.82rem;
+    font-weight: 600; text-align: center;
   }
 
-  /* FOOTER */
+  .cta-note { font-size: 0.77rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; }
+
   footer {
     border-top: 1px solid var(--slate-border);
     padding: 1.4rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 0.5rem;
   }
-
   .footer-logo {
     font-family: 'Sora', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--slate);
-    letter-spacing: -0.01em;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--slate); letter-spacing: -0.01em;
   }
   .footer-logo span { color: var(--sky); }
   .footer-note { font-size: 0.78rem; color: var(--ink-muted); }
@@ -516,9 +486,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 580px) {
-    .email-form, .cta-form { flex-direction: column; }
-    .submit-btn, .cta-btn { width: 100%; }
+  @media (max-width: 620px) {
+    .dual-signup, .two-col, .cta-dual { grid-template-columns: 1fr; }
     nav .nav-cta { display: none; }
   }
 </style>
@@ -527,20 +496,35 @@
 
 <nav>
   <div class="logo">AFH<span>Desk</span></div>
-  <button class="nav-cta" onclick="document.getElementById('hero-email').focus()">Get early access</button>
+  <button class="nav-cta" onclick="document.getElementById('provider-email').focus()">Join the waitlist</button>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge">Now accepting early access signups</div>
-    <h1>Run your adult family home<br>from <span>one desk</span></h1>
-    <p class="hero-sub">AFHDesk is the all-in-one software built for adult family home operators — medication tracking, care plans, billing, family updates, and AI-powered documentation in one simple platform.</p>
+    <h1>The marketplace for <span>adult family home</span> care</h1>
+    <p class="hero-sub">AFHDesk connects families searching for care with trusted adult family home providers and private caregivers — all in one place. Find the right fit, faster.</p>
 
-    <div class="email-form" id="email-form">
-      <input class="email-input" id="hero-email" type="email" placeholder="your@email.com" />
-      <button class="submit-btn" onclick="submitEmail()">Get early access</button>
+    <div class="dual-signup">
+      <div class="signup-box provider">
+        <div class="signup-box-label">I'm a provider</div>
+        <div class="signup-box-desc">AFH operator or private caregiver looking for clients</div>
+        <div class="email-row">
+          <input class="email-input" id="provider-email" type="email" placeholder="your@email.com" />
+          <button class="submit-btn" onclick="submitProvider()">Get early access</button>
+          <div class="success-msg" id="provider-success">✓ You're on the list!</div>
+        </div>
+      </div>
+      <div class="signup-box family">
+        <div class="signup-box-label">I'm looking for care</div>
+        <div class="signup-box-desc">Family or individual searching for AFH placement</div>
+        <div class="email-row">
+          <input class="email-input" id="family-email" type="email" placeholder="your@email.com" />
+          <button class="submit-btn" onclick="submitFamily()">Get early access</button>
+          <div class="success-msg" id="family-success">✓ You're on the list!</div>
+        </div>
+      </div>
     </div>
-    <div class="success-msg" id="success-msg">✓ You're on the list! We'll be in touch before we launch.</div>
     <p class="form-note">No credit card. No commitment. We'll email you when we're ready.</p>
 
     <div class="social-proof">
@@ -550,7 +534,7 @@
         <div class="avatar av3">ZW</div>
         <div class="avatar av4">NB</div>
       </div>
-      <span>Join AFH operators already on the waitlist</span>
+      <span>Join providers and families already on the waitlist</span>
     </div>
   </div>
 </section>
@@ -558,20 +542,69 @@
 <section class="stats-bar">
   <div class="stats-inner">
     <div class="stat">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Core features at launch</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">10</div>
-      <div class="stat-label">Total features on roadmap</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2hrs</div>
-      <div class="stat-label">Designed to save daily</div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Sides of the marketplace</div>
     </div>
     <div class="stat">
       <div class="stat-num">$0</div>
       <div class="stat-label">To join the waitlist</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Platform for all AFH care</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">To search & browse</div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="how-header">
+    <span class="section-label">How it works</span>
+    <h2>One platform, two sides</h2>
+  </div>
+  <div class="two-col">
+    <div class="side-card provider-card">
+      <div class="side-card-title">
+        <div class="side-card-icon">🏠</div>
+        For providers
+      </div>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Create your profile</strong> — list your home or services, availability, rates, certifications, and languages spoken.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Get discovered</strong> — families in your area search and find you based on their care needs and preferences.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Connect and fill beds</strong> — receive inquiries, message families directly, and confirm placements in the platform.</div>
+        </div>
+      </div>
+    </div>
+    <div class="side-card family-card">
+      <div class="side-card-title">
+        <div class="side-card-icon">❤️</div>
+        For families
+      </div>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Describe your needs</strong> — tell us about your loved one's care requirements, location, budget, and preferences.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Browse verified providers</strong> — search licensed AFH homes and vetted caregivers with real reviews and credentials.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Find the right fit</strong> — message providers, schedule tours, and make confident placement decisions.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -579,116 +612,57 @@
 <section class="problem">
   <div class="problem-inner">
     <span class="section-label">The problem</span>
-    <h2>Running an AFH on paper is exhausting</h2>
-    <p>You became an adult family home operator to care for people — not to spend your evenings buried in binders, clipboards, and spreadsheets. The paperwork never stops. And one missed signature or late med record can cost you a citation.</p>
-    <p>Existing software is built for 100-bed facilities and priced to match. AFH operators deserve a tool built exactly for them.</p>
+    <h2>Finding quality AFH care is broken</h2>
+    <p>Families searching for adult family home placement have no good way to compare options. Word of mouth, outdated state directories, and cold calls to homes — that's the current process. It's slow, stressful, and opaque.</p>
+    <p>Providers on the other side have no modern way to market available beds or reach the families that need them most.</p>
     <div class="pain-points">
       <div class="pain-point">
+        <div class="pain-point-icon">🔍</div>
+        <div class="pain-point-text">No central place to search and compare AFH providers</div>
+      </div>
+      <div class="pain-point">
         <div class="pain-point-icon">📋</div>
-        <div class="pain-point-text">Paper MARs that get lost, smudged, or filled out wrong</div>
+        <div class="pain-point-text">State directories are outdated and hard to navigate</div>
       </div>
       <div class="pain-point">
-        <div class="pain-point-icon">📁</div>
-        <div class="pain-point-text">Staff credentials expiring without warning</div>
+        <div class="pain-point-icon">🏠</div>
+        <div class="pain-point-text">Providers fill beds through word of mouth with no marketing tools</div>
       </div>
       <div class="pain-point">
-        <div class="pain-point-icon">💸</div>
-        <div class="pain-point-text">Monthly invoices built manually in Word or Excel</div>
-      </div>
-      <div class="pain-point">
-        <div class="pain-point-icon">📞</div>
-        <div class="pain-point-text">Families calling constantly for updates on their loved ones</div>
+        <div class="pain-point-icon">⏳</div>
+        <div class="pain-point-text">Placement takes weeks — families need answers faster</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="features">
-  <div class="features-header">
-    <span class="section-label">What's included</span>
-    <h2>Everything you need to run your home,<br>nothing you don't</h2>
-  </div>
-
-  <div style="margin-bottom:1rem;"><span class="phase-label phase-1">Available at launch</span></div>
-  <div class="features-grid" style="margin-bottom:2.25rem;">
-    <div class="feature-item">
-      <div class="feature-icon">💊</div>
-      <div class="feature-title">eMAR</div>
-      <div class="feature-desc">Caregivers log every medication pass from their phone, and the system flags anything missed or late so nothing slips through.</div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">👤</div>
-      <div class="feature-title">Resident profiles & care plans</div>
-      <div class="feature-desc">Each resident gets a full digital profile with health history, diagnoses, allergies, and a care plan that tracks changes over time.</div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">✅</div>
-      <div class="feature-title">Daily tasks & ADL tracking</div>
-      <div class="feature-desc">Caregivers check off daily tasks and document how much assistance each resident needed with bathing, dressing, eating, and other activities.</div>
-    </div>
-
-    <div class="feature-item">
-      <div class="feature-icon">📂</div>
-      <div class="feature-title">Document storage & compliance</div>
-      <div class="feature-desc">Licenses, resident agreements, and staff credentials all live in one place, with automatic alerts when anything is about to expire.</div>
-    </div>
-
-  </div>
-
-  <div style="margin-bottom:1rem;"><span class="phase-label phase-2">Coming soon</span></div>
-  <div class="features-grid">
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">🧾</div>
-      <div class="feature-title">Resident billing & invoicing</div>
-      <div class="feature-desc">AFHDesk generates the monthly family invoice automatically and accepts ACH or card payment directly — no QuickBooks required.</div>
-    </div>
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">👨‍👩‍👧</div>
-      <div class="feature-title">Family portal</div>
-      <div class="feature-desc">Family members get a private view of their loved one's daily notes, medication confirmations, vitals, and any incident alerts.</div>
-    </div>
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">🚨</div>
-      <div class="feature-title">Incident & health event logging</div>
-      <div class="feature-desc">Falls, behavior changes, and hospitalizations get logged instantly and formatted into the state-required incident report PDF automatically.</div>
-    </div>
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">⏱️</div>
-      <div class="feature-title">Staff time clock</div>
-      <div class="feature-desc">Caregivers clock in and out from the app, generating timestamped timesheets with a clean audit trail for the owner.</div>
-    </div>
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">✨</div>
-      <div class="feature-title">AI progress notes</div>
-      <div class="feature-desc">Tap a few boxes or speak a few words and AI drafts a complete, professional progress note ready to approve and sign in seconds.</div>
-    </div>
-    <div class="feature-item phase2-item">
-      <div class="feature-icon">🌐</div>
-      <div class="feature-title">Multilingual UI</div>
-      <div class="feature-desc">The full caregiver interface is available in Spanish — the first AFH software built for the large Latino operator community.</div>
-    </div>
-
   </div>
 </section>
 
 <section class="cta-section">
   <div class="cta-inner">
     <span class="section-label">Early access</span>
-    <h2>Be the first AFH operator to run smarter</h2>
-    <p>We're building AFHDesk for operators like you. Sign up and we'll keep you updated — early access members get a say in what we build first.</p>
+    <h2>Be among the first on AFHDesk</h2>
+    <p>We're building for both sides. Sign up and we'll keep you in the loop — early members get priority access and a say in what we build first.</p>
 
-    <div class="cta-form" id="cta-form">
-      <input class="cta-input" id="bottom-email" type="email" placeholder="your@email.com" />
-      <button class="cta-btn" onclick="submitEmail2()">Join the waitlist</button>
+    <div class="cta-dual">
+      <div class="cta-box provider-cta">
+        <div class="cta-box-label">I'm a provider</div>
+        <input class="cta-input" id="cta-provider-email" type="email" placeholder="your@email.com" />
+        <button class="cta-btn" onclick="submitCtaProvider()">Join as provider</button>
+        <div class="cta-success" id="cta-provider-success">✓ You're on the list!</div>
+      </div>
+      <div class="cta-box family-cta">
+        <div class="cta-box-label">I'm looking for care</div>
+        <input class="cta-input" id="cta-family-email" type="email" placeholder="your@email.com" />
+        <button class="cta-btn" onclick="submitCtaFamily()">Join as family</button>
+        <div class="cta-success" id="cta-family-success">✓ You're on the list!</div>
+      </div>
     </div>
-    <div class="cta-success" id="cta-success">✓ You're on the list! We'll be in touch before we launch.</div>
-    <p class="cta-note" style="margin-top:0.75rem;">No credit card. No spam. Unsubscribe anytime.</p>
+    <p class="cta-note">No credit card. No spam. Unsubscribe anytime.</p>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">AFH<span>Desk</span></div>
-  <div class="footer-note">Built for adult family home operators · afhdesk.com</div>
+  <div class="footer-note">The adult family home marketplace · AFHDesk.com</div>
 </footer>
 
 <script type="module">
@@ -707,50 +681,71 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  async function saveEmail(email) {
+  async function saveEmail(email, type) {
     await addDoc(collection(db, "waitlist"), {
-      email: email,
+      email,
+      type,
       createdAt: serverTimestamp(),
       source: "landing-page"
     });
   }
 
-  function showSuccess(formId, successId) {
-    document.getElementById(formId).style.display = 'none';
+  function showSuccess(inputId, successId) {
+    document.getElementById(inputId).style.display = 'none';
     document.getElementById(successId).style.display = 'block';
   }
 
-  async function submitEmail() {
-    const input = document.getElementById('hero-email');
+  async function submitProvider() {
+    const input = document.getElementById('provider-email');
     const email = input.value.trim();
     if (!email || !email.includes('@')) { input.style.borderColor = '#0EA5E9'; return; }
-    try {
-      await saveEmail(email);
-      showSuccess('email-form', 'success-msg');
-    } catch (e) {
-      console.error(e);
-      showSuccess('email-form', 'success-msg');
-    }
+    try { await saveEmail(email, 'provider'); } catch(e) { console.error(e); }
+    input.style.display = 'none';
+    document.querySelector('#provider-email + button, .provider .submit-btn').style.display = 'none';
+    document.getElementById('provider-success').style.display = 'block';
   }
 
-  async function submitEmail2() {
-    const input = document.getElementById('bottom-email');
+  async function submitFamily() {
+    const input = document.getElementById('family-email');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) { input.style.borderColor = '#334155'; return; }
+    try { await saveEmail(email, 'family'); } catch(e) { console.error(e); }
+    input.style.display = 'none';
+    document.getElementById('family-success').style.display = 'block';
+  }
+
+  async function submitCtaProvider() {
+    const input = document.getElementById('cta-provider-email');
     const email = input.value.trim();
     if (!email || !email.includes('@')) { input.style.borderColor = 'rgba(255,255,255,0.8)'; return; }
-    try {
-      await saveEmail(email);
-      showSuccess('cta-form', 'cta-success');
-    } catch (e) {
-      console.error(e);
-      showSuccess('cta-form', 'cta-success');
-    }
+    try { await saveEmail(email, 'provider'); } catch(e) { console.error(e); }
+    input.style.display = 'none';
+    document.getElementById('cta-provider-success').style.display = 'block';
   }
 
-  document.getElementById('hero-email').addEventListener('keydown', e => { if (e.key === 'Enter') submitEmail(); });
-  document.getElementById('bottom-email').addEventListener('keydown', e => { if (e.key === 'Enter') submitEmail2(); });
+  async function submitCtaFamily() {
+    const input = document.getElementById('cta-family-email');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) { input.style.borderColor = 'rgba(255,255,255,0.8)'; return; }
+    try { await saveEmail(email, 'family'); } catch(e) { console.error(e); }
+    input.style.display = 'none';
+    document.getElementById('cta-family-success').style.display = 'block';
+  }
 
-  window.submitEmail = submitEmail;
-  window.submitEmail2 = submitEmail2;
+  ['provider','family'].forEach(t => {
+    document.getElementById(`${t}-email`).addEventListener('keydown', e => {
+      if (e.key === 'Enter') t === 'provider' ? submitProvider() : submitFamily();
+    });
+    document.getElementById(`cta-${t}-email`).addEventListener('keydown', e => {
+      if (e.key === 'Enter') t === 'provider' ? submitCtaProvider() : submitCtaFamily();
+    });
+  });
+
+  window.submitProvider = submitProvider;
+  window.submitFamily = submitFamily;
+  window.submitCtaProvider = submitCtaProvider;
+  window.submitCtaFamily = submitCtaFamily;
 </script>
+
 </body>
 </html>
